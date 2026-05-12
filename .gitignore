@@ -1,0 +1,22 @@
+# Java
+**/target/
+**/.mvn/wrapper/maven-wrapper.jar
+**/*.iws
+**/*.iml
+**/*.ipr
+
+# IDE
+.idea/
+**/.idea/
+.vscode/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# Secrets
+**/application-local.yaml
+**/.env
