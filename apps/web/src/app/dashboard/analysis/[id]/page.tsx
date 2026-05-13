@@ -145,8 +145,8 @@ export default function AnalysisDetailPage() {
         const token = localStorage.getItem("token");
         const headers = { ...(token && { Authorization: `Bearer ${token}` }) };
         Promise.all([
-            fetch(`http://localhost:8080/api/analysis/${id}`, { headers }),
-            fetch(`http://localhost:8080/api/analysis/history`, { headers }),
+            fetch(`${API_URL}/api/analysis/${id}`, { headers }),
+            fetch(`${API_URL}/api/analysis/history`, { headers }),
         ]).then(async ([detailRes, histRes]) => {
             if (detailRes.ok) {
                 const d = await detailRes.json();

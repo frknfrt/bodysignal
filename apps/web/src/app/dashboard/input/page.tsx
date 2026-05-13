@@ -3,6 +3,8 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { EXERCISE_DATABASE } from "@/constants/exercises"
+import { API_URL } from "@/lib/api";
+
 const RPE_VALUES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 export default function SignalInputPage() {
@@ -84,7 +86,7 @@ export default function SignalInputPage() {
            const tokenStr = localStorage.getItem("token");
            const token = tokenStr ? tokenStr : null;
 
-           const res = await fetch("http://localhost:8080/api/daily-records", {
+           const res = await fetch("${API_URL}/api/daily-records", {
                method: "POST",
                headers: {
                    "Content-Type": "application/json",

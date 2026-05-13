@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { API_URL } from "@/lib/api";
 
 function isProfileComplete(user: any): boolean {
     return user?.height != null && user?.age != null;
@@ -37,7 +38,7 @@ export default function LoginPage() {
         setError('');
         setLoading(true);
         try {
-            const res = await fetch('http://localhost:8080/api/auth/login', {
+            const res = await fetch('${API_URL}/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),

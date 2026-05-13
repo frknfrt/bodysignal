@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { API_URL } from "@/lib/api";
 
 type FormData = {
     height: string;
@@ -101,7 +102,7 @@ export default function OnboardingPage() {
         setSaving(true);
         try {
             const token = localStorage.getItem('token');
-            await fetch('http://localhost:8080/api/user/profile', {
+            await fetch('${API_URL}/api/user/profile', {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({

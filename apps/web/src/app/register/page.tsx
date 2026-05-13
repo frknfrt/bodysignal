@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { API_URL } from "@/lib/api";
 
 function EyeIcon({ open }: { open: boolean }) {
     return open ? (
@@ -58,7 +59,7 @@ export default function RegisterPage() {
 
         setLoading(true);
         try {
-            const res = await fetch('http://localhost:8080/api/auth/register', {
+            const res = await fetch('${API_URL}/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fullName, email, password }),
@@ -68,7 +69,7 @@ export default function RegisterPage() {
                 throw new Error(msg || 'Kayıt başarısız');
             }
             // Auto-login ve onboarding'e yönlendir
-            const loginRes = await fetch('http://localhost:8080/api/auth/login', {
+            const loginRes = await fetch('${API_URL}/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),

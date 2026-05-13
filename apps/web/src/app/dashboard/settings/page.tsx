@@ -3,6 +3,7 @@
 import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '@/context/AuthContext';
+import { API_URL } from "@/lib/api";
 
 // ─── Password strength ────────────────────────────────────────────────────────
 
@@ -88,7 +89,7 @@ export default function SettingsPage() {
         const token = localStorage.getItem('token');
         setPwLoading(true);
         try {
-            const res = await fetch('http://localhost:8080/api/user/change-password', {
+            const res = await fetch('${API_URL}/api/user/change-password', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ currentPassword: pw.current, newPassword: pw.next }),
@@ -103,7 +104,7 @@ export default function SettingsPage() {
 
     const fetchHistory = useCallback(async () => {
         const token = localStorage.getItem('token');
-        const res = await fetch('http://localhost:8080/api/analysis/history', {
+        const res = await fetch('${API_URL}/api/analysis/history', {
             headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error('Veri alınamadı');
@@ -159,7 +160,7 @@ export default function SettingsPage() {
         const token = localStorage.getItem('token');
         setDeleteLoading(true);
         try {
-            const res = await fetch('http://localhost:8080/api/user/account', {
+            const res = await fetch('${API_URL}/api/user/account', {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${token}` },
             });
