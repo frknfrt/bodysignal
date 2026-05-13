@@ -86,7 +86,7 @@ export default function SignalInputPage() {
            const tokenStr = localStorage.getItem("token");
            const token = tokenStr ? tokenStr : null;
 
-           const res = await fetch("${API_URL}/api/daily-records", {
+           const res = await fetch(`${API_URL}/api/daily-records`, {
                method: "POST",
                headers: {
                    "Content-Type": "application/json",

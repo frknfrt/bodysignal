@@ -102,7 +102,7 @@ export default function OnboardingPage() {
         setSaving(true);
         try {
             const token = localStorage.getItem('token');
-            await fetch('${API_URL}/api/user/profile', {
+            await fetch(`${API_URL}/api/user/profile`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({

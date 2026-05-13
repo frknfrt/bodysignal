@@ -89,7 +89,7 @@ export default function SettingsPage() {
         const token = localStorage.getItem('token');
         setPwLoading(true);
         try {
-            const res = await fetch('${API_URL}/api/user/change-password', {
+            const res = await fetch(`${API_URL}/api/user/change-password`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ currentPassword: pw.current, newPassword: pw.next }),
@@ -104,7 +104,7 @@ export default function SettingsPage() {
 
     const fetchHistory = useCallback(async () => {
         const token = localStorage.getItem('token');
-        const res = await fetch('${API_URL}/api/analysis/history', {
+        const res = await fetch(`${API_URL}/api/analysis/history`, {
             headers: { Authorization: `Bearer ${token}` },
         });
         if (!res.ok) throw new Error('Veri alınamadı');
@@ -160,7 +160,7 @@ export default function SettingsPage() {
         const token = localStorage.getItem('token');
         setDeleteLoading(true);
         try {
-            const res = await fetch('${API_URL}/api/user/account', {
+            const res = await fetch(`${API_URL}/api/user/account`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${token}` },
             });

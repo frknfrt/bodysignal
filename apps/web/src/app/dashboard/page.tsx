@@ -95,9 +95,9 @@ export default function DashboardPage() {
         const token = localStorage.getItem("token");
         const headers = { ...(token && { Authorization: `Bearer ${token}` }) };
         Promise.all([
-            fetch('${API_URL}/api/analysis/latest',        { headers }),
-            fetch('${API_URL}/api/analysis/history',       { headers }),
-            fetch('${API_URL}/api/analysis/plateau-status', { headers }),
+            fetch(`${API_URL}/api/analysis/latest`,        { headers }),
+            fetch(`${API_URL}/api/analysis/history`,       { headers }),
+            fetch(`${API_URL}/api/analysis/plateau-status`, { headers }),
         ]).then(async ([latestRes, histRes, plateauRes]) => {
             if (latestRes.ok) {
                 const d = await latestRes.json();

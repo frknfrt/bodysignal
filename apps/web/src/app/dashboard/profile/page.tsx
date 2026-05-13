@@ -43,8 +43,8 @@ export default function ProfilePage() {
         const token = localStorage.getItem('token');
         if (!token) return;
         Promise.all([
-            fetch('${API_URL}/api/analysis/history', { headers: { Authorization: `Bearer ${token}` } }),
-            fetch('${API_URL}/api/user/profile',     { headers: { Authorization: `Bearer ${token}` } }),
+            fetch(`${API_URL}/api/analysis/history`, { headers: { Authorization: `Bearer ${token}` } }),
+            fetch(`${API_URL}/api/user/profile`,     { headers: { Authorization: `Bearer ${token}` } }),
         ]).then(async ([histRes, profRes]) => {
             if (histRes.ok) setHistory(await histRes.json());
             if (profRes.ok) {
@@ -85,7 +85,7 @@ export default function ProfilePage() {
     const handleSaveProfile = async () => {
         const token = localStorage.getItem('token');
         try {
-            await fetch('${API_URL}/api/user/profile', {
+            await fetch(`${API_URL}/api/user/profile`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({
@@ -115,7 +115,7 @@ export default function ProfilePage() {
         const token = localStorage.getItem('token');
         setPwLoading(true);
         try {
-            const res = await fetch('${API_URL}/api/user/change-password', {
+            const res = await fetch(`${API_URL}/api/user/change-password`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ currentPassword: pwForm.current, newPassword: pwForm.next }),
