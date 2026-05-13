@@ -86,7 +86,7 @@ export default function HeroText() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                     >
-                        <Button
+                        <button
                             className="
                               px-6 sm:px-8
                               py-3 sm:py-4
@@ -115,7 +115,7 @@ export default function HeroText() {
                                 whileHover={{ x: ['-100%', '100%'] }}
                                 transition={{ duration: 0.5 }}
                             />
-                        </Button>
+                        </button>
                     </motion.div>
                 </Link>
             </div>
