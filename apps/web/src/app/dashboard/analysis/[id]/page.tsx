@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { API_URL } from "@/lib/api";
 const STATUS_CONFIG = {
     POSITIVE: {
         hex: "#22c55e", text: "text-green-500", bg: "bg-green-500/8", border: "border-green-500/25", dot: "bg-green-500",
